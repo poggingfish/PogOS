@@ -50,6 +50,19 @@
         <USB_PxeInterface>192.168.0.8</USB_PxeInterface>
         <USB_EnableGDB>False</USB_EnableGDB>
         <USB_StartCosmosGDB>False</USB_StartCosmosGDB>
+        <IntelEdison_StackCorruptionDetectionEnabled>True</IntelEdison_StackCorruptionDetectionEnabled>
+        <IntelEdison_StackCorruptionDetectionLevel>MethodFooters</IntelEdison_StackCorruptionDetectionLevel>
+        <IntelEdison_Description>Connect to Intel Edison device to deploy and debug.</IntelEdison_Description>
+        <IntelEdison_Deployment>BinaryImage</IntelEdison_Deployment>
+        <IntelEdison_Launch>IntelEdison</IntelEdison_Launch>
+        <IntelEdison_DebugEnabled>True</IntelEdison_DebugEnabled>
+        <IntelEdison_DebugMode>Source</IntelEdison_DebugMode>
+        <IntelEdison_IgnoreDebugStubAttribute>False</IntelEdison_IgnoreDebugStubAttribute>
+        <IntelEdison_CosmosDebugPort>Serial: COM1</IntelEdison_CosmosDebugPort>
+        <IntelEdison_VisualStudioDebugPort>Pipe: Cosmos\Serial</IntelEdison_VisualStudioDebugPort>
+        <IntelEdison_PxeInterface>192.168.0.8</IntelEdison_PxeInterface>
+        <IntelEdison_EnableGDB>False</IntelEdison_EnableGDB>
+        <IntelEdison_StartCosmosGDB>False</IntelEdison_StartCosmosGDB>
     </PropertyGroup>
 
     <PropertyGroup>

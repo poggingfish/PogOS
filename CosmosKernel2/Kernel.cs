@@ -8,21 +8,21 @@ namespace PogOS
     public class Kernel : Sys.Kernel
     {
         public static String PogVer = "1.1";
-        public static String Username = "root";
+        public static String Username = "";
         protected override void BeforeRun()
         {
-            
             Console.Clear();
             Console.WriteLine("Loading PogOS..");
+            Console.Write("What is your name: ");
+            Username = Console.ReadLine();
         }
 
         protected override void Run()
         {
-
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(Username);
+            Console.Write(Username+"@");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("@PogOS $: ");
+            Console.Write("PogOS $: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             var Input = Console.ReadLine().Split(" ");
             if (Input[0].ToLower() == "print")
