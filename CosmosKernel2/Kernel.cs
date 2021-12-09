@@ -24,7 +24,7 @@ namespace PogOS
         protected override void Run()
         {
             Console.ForegroundColor = ConsoleColor.Blue;
-            Console.Write(Username+"@");
+            Console.Write(Username + "@");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("PogOS $: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
@@ -33,9 +33,9 @@ namespace PogOS
             {
                 try
                 {
-                    foreach(String x in Input)
+                    foreach (String x in Input)
                     {
-                        if (x.ToLower() != "print"){Console.Write(x+" ");}
+                        if (x.ToLower() != "print") { Console.Write(x + " "); }
                     }
                     Console.WriteLine("");
                 }
@@ -51,6 +51,18 @@ namespace PogOS
             }
             if (Input[0].ToLower() == "cls") {
                 Console.Clear();
+            }
+            if (Input[0].ToLower() == "changename")
+            {
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.Write("What is your name: ");
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
+                Username = Console.ReadLine();
+            }
+            if (Input[0].ToLower() == "date")
+            {
+                var time = DateTime.Now;
+                Console.WriteLine(time);
             }
 
         }
