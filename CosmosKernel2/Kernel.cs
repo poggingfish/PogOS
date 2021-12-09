@@ -10,21 +10,23 @@ namespace PogOS
         public static String PogVer = "1.0";
         protected override void BeforeRun()
         {
-            
+            Console.Clear();
             Console.WriteLine("Loading PogOS..");
         }
 
         protected override void Run()
         {
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("PogOS $: ");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             var Input = Console.ReadLine().Split(" ");
-            if(Input[0].ToLower() == "print")
+            if (Input[0].ToLower() == "print")
             {
                 try
                 {
                     foreach(String x in Input)
                     {
-                        if (x != "print"){Console.Write(x);}
+                        if (x.ToLower() != "print"){Console.Write(x+" ");}
                     }
                     Console.WriteLine("");
                 }
@@ -38,6 +40,10 @@ namespace PogOS
             {
                 Console.WriteLine("PogOS Version: " + PogVer);
             }
+            if (Input[0].ToLower() == "cls") {
+                Console.Clear();
+            }
+
         }
     }
 }
