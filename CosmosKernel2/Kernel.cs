@@ -11,9 +11,13 @@ namespace PogOS
         public static String Username = "";
         protected override void BeforeRun()
         {
+            
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Loading PogOS..");
+            Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("What is your name: ");
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Username = Console.ReadLine();
         }
 
