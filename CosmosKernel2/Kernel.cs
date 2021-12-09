@@ -16,9 +16,16 @@ namespace PogOS
         {
             Console.Write("$: ");
             var Input = Console.ReadLine().Split(" ");
-            if(Input[0].ToLower() == "hello")
+            if(Input[0].ToLower() == "print")
             {
-                Console.WriteLine("Hello World!");
+                try
+                {
+                    Console.WriteLine(Input[1]);
+                }
+                catch
+                {
+                    Console.WriteLine("Error.");
+                }
             }
         }
     }
