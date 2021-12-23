@@ -8,7 +8,7 @@ namespace PogOS
     public class Kernel : Sys.Kernel
     {
 
-        public static String PogVer = "1.2";
+        public static String PogVer = "1.3";
         public static String Username = "";
         protected override void BeforeRun()
         {
