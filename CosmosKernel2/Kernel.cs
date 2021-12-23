@@ -5,7 +5,9 @@ using Sys = Cosmos.System;
 
 namespace PogOS
 {
-    public class Kernel : Sys.Kernel{
+    public class Kernel : Sys.Kernel
+    {
+
         public static String PogVer = "1.2";
         public static String Username = "";
         protected override void BeforeRun()
@@ -17,14 +19,33 @@ namespace PogOS
             Console.Write("What is your name: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Username = Console.ReadLine();
-            
+            Console.WriteLine(">======>                                  >===>        >=>>=>");
+            Console.WriteLine(">=>    >=>                              >=>    >=>   >=>    >=>");
+            Console.WriteLine(">=>    >=>    >=>        >=>          >=>        >=>  >=>");
+            Console.WriteLine(">======>    >=>  >=>   >=>  >=>       >=>        >=>    >=>");
+            Console.WriteLine(">=>        >=>    >=> >=>   >=>       >=>        >=>       >=>");
+            Console.WriteLine(">=>         >=>  >=>   >=>  >=>         >=>     >=>  >=>    >=>");
+            Console.WriteLine(">=>           >=>          >=>            >===>        >=>>=>");
+            Console.WriteLine("                        >=>                                  ");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine(">=>>=>                    >====>                >=>");
+            Console.WriteLine(">>   >=>                  >=>   >=>             >=>");
+            Console.WriteLine(">>    >=> >=>   >=>       >=>    >=> >=>   >=>  >=>    >=> >=>  >==>>==>");
+            Console.WriteLine(">==>>=>    >=> >=>        >=>    >=>  >=> >=>   >=>  >=>   >=>   >=>  >=>");
+            Console.WriteLine(">>    >=>    >==>         >=>    >=>    >==>    >=> >=>    >=>   >=>  >=>");
+            Console.WriteLine(">>     >>     >=>         >=>   >=>      >=>    >=>  >=>   >=>   >=>  >=>");
+            Console.WriteLine(">===>>=>     >=>          >====>        >=>    >==>   >==>>>==> >==>  >=>");
+
         }
 
         protected override void Run()
         {
+
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(Username + "@");
             Console.ForegroundColor = ConsoleColor.Cyan;
+            
             Console.Write("PogOS $: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             var Input = Console.ReadLine().Split(" ");
@@ -44,11 +65,12 @@ namespace PogOS
                 }
             }
 
-            else if(Input[0].ToLower() == "sysinfo")
+            else if (Input[0].ToLower() == "sysinfo")
             {
                 Console.WriteLine("PogOS Version: " + PogVer);
             }
-            else if (Input[0].ToLower() == "cls" || Input[0].ToLower() == "clear") {
+            else if (Input[0].ToLower() == "cls" || Input[0].ToLower() == "clear")
+            {
                 Console.Clear();
             }
             else if (Input[0].ToLower() == "changename")
@@ -62,6 +84,18 @@ namespace PogOS
             {
                 var time = DateTime.Now;
                 Console.WriteLine(time);
+            }
+            else if (Input[0].ToLower() == "notepad")
+            {
+                Console.WriteLine("Press exit to exit.");
+                while (true)
+                {
+                    var input2 = Console.ReadLine();
+                    if (input2 == "exit")
+                    {
+                        break;
+                    }
+                }
             }
             else
             {
