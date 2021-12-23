@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using Sys = Cosmos.System;
-
+using PogOS;
 namespace PogOS
 {
     public class Kernel : Sys.Kernel
@@ -10,6 +9,7 @@ namespace PogOS
 
         public static String PogVer = "1.3";
         public static String Username = "";
+        public static Dictionary<string, string> env_vars = new Dictionary<string,string>();
         protected override void BeforeRun()
         {
             Console.Clear();            
@@ -55,9 +55,17 @@ namespace PogOS
                 {
                     foreach (String x in Input)
                     {
-                        if (x.ToLower() != "print") { Console.Write(x + " "); }
+                        if (x.ToLower() != "print") {
+                            try
+                            {
+                                Console.WriteLine(env_vars[x]);
+                            }
+                            catch
+                            {
+                                Console.WriteLine(x);
+                            }
+                        }
                     }
-                    Console.WriteLine("");
                 }
                 catch
                 {
@@ -97,12 +105,22 @@ namespace PogOS
                     }
                 }
             }
+            else if (Input[0].ToLower() == "set"){
+                try
+                {
+                    env_vars.Add(Input[1],Input[2]);
+                }
+                catch
+                {
+                    ErrorHandler.EnvVarError();
+                }
+                }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("Unknown command.");
+                ErrorHandler.CommandError();
             }
 
         }
+
     }
 }
