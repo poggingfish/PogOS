@@ -19,7 +19,7 @@ namespace PogOS.games
                     guess = Console.ReadLine();
                     if (Int16.Parse(guess) < number)
                     {
-                        Console.WriteLine("Your gues is too low.");
+                        Console.WriteLine("Your guess is too low.");
                     }
                     if (Int16.Parse(guess) > number)
                     {
