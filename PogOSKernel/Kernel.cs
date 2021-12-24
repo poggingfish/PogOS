@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sys = Cosmos.System;
+using Cosmos.HAL;
 using PogOS;
 namespace PogOS
+    /*
+     * Pog Os
+     * -Dylan 2021
+     */
 {
     public class Kernel : Sys.Kernel
     {
-
-        public static String PogVer = "1.3";
-        public static String Username = "";
+    
+        public string PogVer;
+        public string Username = "";
         public static Dictionary<string, string> env_vars = new Dictionary<string,string>();
         protected override void BeforeRun()
         {
+            PogVer = "1.31";
             Console.Clear();            
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Loading PogOS "+PogVer+".");
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.Write("What is your name: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
-            Username = Console.ReadLine();
+            Username = Console.ReadLine().Replace(' ', '-');
             Console.WriteLine(">======>                                  >===>        >=>>=>");
             Console.WriteLine(">=>    >=>                              >=>    >=>   >=>    >=>");
             Console.WriteLine(">=>    >=>    >=>        >=>          >=>        >=>  >=>");
@@ -36,16 +42,15 @@ namespace PogOS
             Console.WriteLine(">>    >=>    >==>         >=>    >=>    >==>    >=> >=>    >=>   >=>  >=>");
             Console.WriteLine(">>     >>     >=>         >=>   >=>      >=>    >=>  >=>   >=>   >=>  >=>");
             Console.WriteLine(">===>>=>     >=>          >====>        >=>    >==>   >==>>>==> >==>  >=>");
-
+            Log4Pog.LogOK("Set enviornemnt variables");
+            Log4Pog.LogOK("Succesfully booted.");
         }
 
         protected override void Run()
         {
-
             Console.ForegroundColor = ConsoleColor.Blue;
             Console.Write(Username + "@");
             Console.ForegroundColor = ConsoleColor.Cyan;
-            
             Console.Write("PogOS $: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             var Input = Console.ReadLine().Split(" ");
@@ -58,18 +63,20 @@ namespace PogOS
                         if (x.ToLower() != "print") {
                             try
                             {
-                                Console.WriteLine(env_vars[x]);
+                                Console.Write(env_vars[x].ToString() + " ");
                             }
                             catch
                             {
-                                Console.WriteLine(x);
+                                Console.Write(x + " ");
                             }
+                    
                         }
                     }
+                    Console.WriteLine("");
                 }
                 catch
                 {
-                    Console.WriteLine("Error.");
+                    ErrorHandler.GenericError("");
                 }
             }
 
@@ -106,15 +113,39 @@ namespace PogOS
                 }
             }
             else if (Input[0].ToLower() == "set"){
+                string fullstr = "";
+                int iter = 0;
                 try
                 {
-                    env_vars.Add(Input[1],Input[2]);
+                    foreach (var x in Input)
+                    {
+                        if (x != Input[0])
+                        {
+                            iter++;
+                            if (iter > 1)
+                            {
+                                fullstr += x+" ";
+                            }
+                        }
+                    }
+                    try
+                    {
+                        Enviornment.remove_env(Input[1]);
+                    }
+                    catch
+                    {
+                    }
+                    Enviornment.set_env(Input[1], fullstr);
                 }
                 catch
                 {
                     ErrorHandler.EnvVarError();
                 }
                 }
+            else if (Input[0].ToLower() == "resetres")
+            {
+                
+            }
             else
             {
                 ErrorHandler.CommandError();

@@ -15,5 +15,10 @@ namespace PogOS
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Error setting enviornment variable.");
         }
+        public static void GenericError(string message)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Error. " + message);
+        }
     }
 }
