@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using Sys = Cosmos.System;
-using Cosmos.HAL;
-using PogOS;
+using Cosmos.Core;
 namespace PogOS
-    /*
-     * Pog Os
-     * -Dylan 2021
-     */
+/*
+ * Pog Os
+ * -Dylan 2021
+ */
 {
     public class Kernel : Sys.Kernel
     {
@@ -17,7 +16,7 @@ namespace PogOS
         public static Dictionary<string, string> env_vars = new Dictionary<string,string>();
         protected override void BeforeRun()
         {
-            PogVer = "1.31";
+            PogVer = "Alpha v1.31";
             Console.Clear();            
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("Loading PogOS "+PogVer+".");
@@ -25,23 +24,8 @@ namespace PogOS
             Console.Write("What is your name: ");
             Console.ForegroundColor = ConsoleColor.DarkCyan;
             Username = Console.ReadLine().Replace(' ', '-');
-            Console.WriteLine(">======>                                  >===>        >=>>=>");
-            Console.WriteLine(">=>    >=>                              >=>    >=>   >=>    >=>");
-            Console.WriteLine(">=>    >=>    >=>        >=>          >=>        >=>  >=>");
-            Console.WriteLine(">======>    >=>  >=>   >=>  >=>       >=>        >=>    >=>");
-            Console.WriteLine(">=>        >=>    >=> >=>   >=>       >=>        >=>       >=>");
-            Console.WriteLine(">=>         >=>  >=>   >=>  >=>         >=>     >=>  >=>    >=>");
-            Console.WriteLine(">=>           >=>          >=>            >===>        >=>>=>");
-            Console.WriteLine("                        >=>                                  ");
-            Console.WriteLine("");
-            Console.WriteLine("");
-            Console.WriteLine(">=>>=>                    >====>                >=>");
-            Console.WriteLine(">>   >=>                  >=>   >=>             >=>");
-            Console.WriteLine(">>    >=> >=>   >=>       >=>    >=> >=>   >=>  >=>    >=> >=>  >==>>==>");
-            Console.WriteLine(">==>>=>    >=> >=>        >=>    >=>  >=> >=>   >=>  >=>   >=>   >=>  >=>");
-            Console.WriteLine(">>    >=>    >==>         >=>    >=>    >==>    >=> >=>    >=>   >=>  >=>");
-            Console.WriteLine(">>     >>     >=>         >=>   >=>      >=>    >=>  >=>   >=>   >=>  >=>");
-            Console.WriteLine(">===>>=>     >=>          >====>        >=>    >==>   >==>>>==> >==>  >=>");
+            logo.printlogo();
+            Enviornment.set_env("user", Username);
             Log4Pog.LogOK("Set enviornemnt variables");
             Log4Pog.LogOK("Succesfully booted.");
         }
@@ -115,36 +99,32 @@ namespace PogOS
             else if (Input[0].ToLower() == "set"){
                 string fullstr = "";
                 int iter = 0;
-                try
+                foreach (var x in Input)
                 {
-                    foreach (var x in Input)
+                    if (x != Input[0])
                     {
-                        if (x != Input[0])
+                        iter++;
+                        if (iter > 1)
                         {
-                            iter++;
-                            if (iter > 1)
-                            {
-                                fullstr += x+" ";
-                            }
+                            fullstr += x+" ";
                         }
                     }
-                    try
-                    {
-                        Enviornment.remove_env(Input[1]);
-                    }
-                    catch
-                    {
-                    }
-                    Enviornment.set_env(Input[1], fullstr);
+                }
+                try
+                {
+                    Enviornment.remove_env(Input[1]);
                 }
                 catch
                 {
-                    ErrorHandler.EnvVarError();
                 }
+            Enviornment.set_env(Input[1], fullstr);
+
                 }
-            else if (Input[0].ToLower() == "resetres")
+            else if (Input[0].ToLower() == "sysinfo")
             {
-                
+                Console.WriteLine("OS Version: "+PogVer);
+                Console.WriteLine("Memory: " + CPU.GetAmountOfRAM() + "MB");
+                Console.WriteLine("Shell: " + "PogOS Shell");
             }
             else
             {
