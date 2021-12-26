@@ -14,7 +14,7 @@ namespace PogOS
     public class Kernel : Sys.Kernel
     {
         public static String PogVer;
-        public static String Username = "fortnite";
+        public static String Username = "PogFish";
         public static Dictionary<string, string> env_vars = new Dictionary<string,string>();
         protected override void BeforeRun()
         {
