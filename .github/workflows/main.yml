@@ -79,4 +79,4 @@ jobs:
     - name: Build Pog Operating System
       run: |
         msbuild "PogOS.sln" /t:Restore
-        msbuild "PogOS.sln" /maxcpucountCos
+        msbuild "PogOS.sln"
