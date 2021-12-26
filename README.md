@@ -4,3 +4,5 @@
 ## Info
 
 PogOS is a simple OS made in Cosmos
+
+Aura-OS license (Github WorkFlow): https://github.com/aura-systems/Aura-Operating-System/blob/master/LICENSE.md
