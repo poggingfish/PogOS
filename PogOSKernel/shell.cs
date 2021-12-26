@@ -36,11 +36,6 @@ namespace PogOS
                     ErrorHandler.GenericError("");
                 }
             }
-
-            else if (Input[0].ToLower() == "sysinfo")
-            {
-                Console.WriteLine("PogOS Version: " + Kernel.PogVer);
-            }
             else if (Input[0].ToLower() == "cls" || Input[0].ToLower() == "clear")
             {
                 Console.Clear();
@@ -105,7 +100,6 @@ namespace PogOS
                 try {PogOS.games.GuessTheNumber.game(Int16.Parse(Input[1]));}
                 catch{ ErrorHandler.GenericError("Did you enter a number?"); }
             }
-
             else
             {
                 ErrorHandler.CommandError();
