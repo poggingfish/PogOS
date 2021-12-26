@@ -1,4 +1,5 @@
-﻿using System;
+﻿#region using
+using System;
 using System.Collections.Generic;
 using Sys = Cosmos.System;
 using Cosmos.Core;
@@ -7,16 +8,17 @@ namespace PogOS
  * Pog Os
  * -Dylan 2021
  */
+#endregion
+
 {
     public class Kernel : Sys.Kernel
     {
-        public static String[] logs;
         public static String PogVer;
-        public static String Username = "";
+        public static String Username = "fortnite";
         public static Dictionary<string, string> env_vars = new Dictionary<string,string>();
         protected override void BeforeRun()
         {
-            logs[logs.Length] = "Ignore me!";
+            Log4Pog.LogOK("Init.");
             PogVer = "Alpha v1.31";
             Console.Clear();            
             Console.ForegroundColor = ConsoleColor.DarkRed;

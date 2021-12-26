@@ -10,7 +10,6 @@ namespace PogOS
         {
             var time = DateTime.Now;
             Console.WriteLine("OK "+time.ToString() + " : " + message);
-            Kernel.logs[Kernel.logs.Length + 1] = "OK " + time.ToString() + " : " + message;
         }
     }
 }

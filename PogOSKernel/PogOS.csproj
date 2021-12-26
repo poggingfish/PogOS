@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.0</TargetFramework>
-        <RuntimeIdentifier>cosmos</RuntimeIdentifier>
+        <TargetFramework>net5.0</TargetFramework>
+        <Platform>cosmos</Platform>
         <SelfContained>True</SelfContained>
         <BinFormat>ELF</BinFormat>
         <StackCorruptionDetectionEnabled>True</StackCorruptionDetectionEnabled>
@@ -63,6 +63,9 @@
         <IntelEdison_PxeInterface>192.168.0.8</IntelEdison_PxeInterface>
         <IntelEdison_EnableGDB>False</IntelEdison_EnableGDB>
         <IntelEdison_StartCosmosGDB>False</IntelEdison_StartCosmosGDB>
+        <ISOFile>bin\Debug\net5.0\PogOS.iso</ISOFile>
+        <CompileVBEMultiboot>False</CompileVBEMultiboot>
+        <ExtractMapFile>False</ExtractMapFile>
     </PropertyGroup>
 
     <PropertyGroup>
@@ -84,6 +87,7 @@
 
     <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+      <DebugEnabled>True</DebugEnabled>
     </PropertyGroup>
 
     <ItemGroup>
